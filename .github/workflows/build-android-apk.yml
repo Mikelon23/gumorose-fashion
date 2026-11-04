@@ -1,0 +1,75 @@
+name: Build Android APK (Gumorose Closet)
+
+# Genera el APK debug instalable en cada push a main/master (y a mano
+# desde la pestaña Actions). No requiere Android Studio local: la nube
+# de GitHub instala el SDK, compila con Gradle y sube el artefacto
+# `gumorose-closet-debug.apk` listo para descargar e instalar.
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - 'apps/mobile/**'
+      - 'packages/shared/**'
+      - '.github/workflows/build-android-apk.yml'
+  workflow_dispatch:
+
+jobs:
+  build-apk:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/mobile
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.12.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Setup Java 17 (Gradle)
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        working-directory: .
+
+      - name: Build web assets (apk-prep)
+        run: pnpm --filter @gumorose/mobile build:apk-prep
+
+      - name: Init Capacitor Android shell
+        run: |
+          npm install -g @capacitor/cli
+          cap init "Gumorose Closet" "ec.gumorose.closet" --web-dir=dist || true
+          npx cap add android || true
+          npx cap sync android
+
+      - name: Build debug APK
+        run: |
+          cd android
+          chmod +x ./gradlew
+          ./gradlew assembleDebug
+
+      - name: Rename APK
+        run: cp android/app/build/outputs/apk/debug/app-debug.apk gumorose-closet-debug.apk
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: gumorose-closet-debug
+          path: apps/mobile/gumorose-closet-debug.apk
+          if-no-files-found: error

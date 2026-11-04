@@ -1,0 +1,27 @@
+{
+  "name": "gumorose-platform",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Gumorose Platform — D2C/B2B textile on-demand manufacturing in Ecuador (Riobamba plant). Monorepo: shared industrial engine + Node.js CMS API + web + mobile.",
+  "packageManager": "pnpm@9.12.0",
+  "engines": {
+    "node": ">=20 <23",
+    "pnpm": ">=9"
+  },
+  "scripts": {
+    "dev:api": "pnpm --filter @gumorose/api dev",
+    "dev:web": "pnpm --filter @gumorose/web dev",
+    "dev:mobile": "pnpm --filter @gumorose/mobile dev",
+    "build": "pnpm --filter @gumorose/shared build && pnpm --filter @gumorose/api build",
+    "build:shared": "pnpm --filter @gumorose/shared build",
+    "build:api": "pnpm --filter @gumorose/api build",
+    "typecheck": "pnpm --filter @gumorose/shared typecheck && pnpm --filter @gumorose/api typecheck && pnpm --filter @gumorose/web typecheck && pnpm --filter @gumorose/mobile typecheck",
+    "test": "pnpm --filter @gumorose/shared test && pnpm --filter @gumorose/api test && pnpm --filter @gumorose/mobile test",
+    "lint": "prettier --check .",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3",
+    "typescript": "^5.6.3"
+  }
+}

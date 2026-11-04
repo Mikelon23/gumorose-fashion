@@ -1,0 +1,9 @@
+{
+  "appId": "ec.gumorose.closet",
+  "appName": "Gumorose Closet",
+  "webDir": "dist",
+  "backgroundColor": "#211D19",
+  "android": {
+    "allowMixedContent": false
+  }
+}

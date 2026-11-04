@@ -1,0 +1,140 @@
+# ==============================================================================
+# GUMOROSE PLATFORM — 
+# Repositorio Monorepo: @gumorose/shared, @gumorose/api, @gumorose/web, @gumorose/mobile
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# A. CREDENCIALES, LLAVES DE API Y ENTORNOS
+# ------------------------------------------------------------------------------
+# Archivos de variables de entorno locales (sensibles)
+.env
+.env.local
+.env.*.local
+.env.development
+.env.test
+.env.production
+.env.staging
+*.env
+
+# Mantener plantillas de ejemplo públicas
+!.env.example
+!.env.*.example
+
+# Llaves privadas, credenciales y tokens de acceso
+*.pem
+*.key
+*.token
+*.id_rsa
+*.id_ed25519
+auth_token*
+credentials.json
+service-account*.json
+
+# Historiales y caches locales de CLI o APIs
+.netrc
+.bash_history
+.zsh_history
+.node_repl_history
+
+# ------------------------------------------------------------------------------
+# B. SEGURIDAD CRIPTOGRÁFICA Y FACTURACIÓN ELECTRÓNICA SRI (ECUADOR)
+# ------------------------------------------------------------------------------
+# Certificados de firma electrónica, llaves digitales y keystores bancarios/SRI
+*.p12
+*.pfx
+*.cer
+*.crt
+*.jks
+*.keystore
+*.der
+
+# Comprobantes electrónicos firmados en producción y buffers temporales de facturas
+*.signed.xml
+temp_invoices/
+sri_receipts/
+sri_invoices/
+sri_authorized/
+sri_xml/
+rides/
+*.ride.pdf
+
+# ------------------------------------------------------------------------------
+# C. DATOS CONFIDENCIALES DE CLIENTES Y MACHINE LEARNING
+# ------------------------------------------------------------------------------
+# Exportaciones locales de datasets con PII (cédulas, nombres, correos, transacciones)
+ml-dataset.csv
+*.dataset.csv
+*.dataset.json
+exports/
+dumps/
+backups/
+customer_data/
+
+# Bases de datos locales embebidas y persistencia en disco
+*.sqlite
+*.sqlite3
+*.sqlite-journal
+*.db
+*.db-journal
+*.dump
+*.rdb
+
+# ------------------------------------------------------------------------------
+# D. ARTEFACTOS DE COMPILACIÓN, EMPAQUETADO Y DEPENDENCIAS
+# ------------------------------------------------------------------------------
+# Gestor de paquetes y dependencias (pnpm / npm / yarn)
+node_modules/
+node_modules.stale/
+.pnpm-store/
+pnpm-debug.log*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Compilados locales y cachés de TypeScript / Bundlers
+dist/
+build/
+out/
+.turbo/
+.next/
+*.tsbuildinfo
+tsconfig.tsbuildinfo
+.vite/
+
+# Artefactos móviles locales (Capacitor / Android / iOS)
+# Nota: Los APKs/AABs se compilan en la nube vía GitHub Actions
+*.apk
+*.aab
+*.ipa
+.gradle/
+apps/mobile/android/
+apps/mobile/ios/
+.expo/
+
+# ------------------------------------------------------------------------------
+# E. ENTORNO DE DESARROLLO, SISTEMA OPERATIVO Y LOGS
+# ------------------------------------------------------------------------------
+# Archivos de sistema operativo (Windows / macOS / Linux)
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Logs de ejecución y servidores de desarrollo locales
+*.log
+logs/
+*.vite-dev.log
+*.vite-dev.err.log
+coverage/
+.nyc_output/
+
+# Archivos temporales de pruebas y cachés de Node / herramientas
+temp/
+tmp/
+*.tmp
+.tmp-tests/
+.cache/

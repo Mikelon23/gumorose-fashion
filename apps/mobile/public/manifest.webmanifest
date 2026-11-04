@@ -1,0 +1,29 @@
+{
+  "name": "Gumorose Closet",
+  "short_name": "Gumorose",
+  "description": "Gumorose móvil: tu clóset virtual, estilista climático con IA y vestidor virtual sobre tu foto real.",
+  "id": "/",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#211D19",
+  "theme_color": "#211D19",
+  "lang": "es",
+  "dir": "ltr",
+  "categories": ["shopping", "lifestyle"],
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}

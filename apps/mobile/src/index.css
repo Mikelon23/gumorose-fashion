@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: #faf7f2;
+  color: #141413;
+  font-family:
+    ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior-y: contain;
+}
+
+button,
+a {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background-color: #c86d51;
+  color: #ffffff;
+}
+
+input[type='range'] {
+  accent-color: #c86d51;
+}
+
+input[type='checkbox'],
+input[type='radio'] {
+  accent-color: #c86d51;
+}
+
+.canvas-grid {
+  background-image:
+    linear-gradient(to right, rgb(20 20 19 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(20 20 19 / 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Rieles táctiles sin barra visible */
+.gum-no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.gum-no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Bottom sheet editorial: sube suave al abrirse */
+@keyframes gum-sheet-up {
+  from {
+    transform: translateY(24px);
+    opacity: 0.6;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.gum-sheet-up {
+  animation: gum-sheet-up 220ms ease-out;
+}
+
+@keyframes gum-cpw-pop {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.12);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.gum-cpw-pop {
+  animation: gum-cpw-pop 320ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

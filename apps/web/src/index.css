@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #faf7f2;
+  color: #141413;
+  font-family:
+    ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: #c86d51;
+  color: #ffffff;
+}
+
+input[type='range'] {
+  accent-color: #c86d51;
+}
+
+input[type='checkbox'],
+input[type='radio'] {
+  accent-color: #c86d51;
+}
+
+/* Lienzo del personalizador: cuadrícula sutil de taller */
+.canvas-grid {
+  background-image:
+    linear-gradient(to right, rgb(20 20 19 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(20 20 19 / 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Carrusel hero editorial: barra de progreso por slide */
+@keyframes gum-hero-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.gum-hero-progress {
+  transform-origin: left;
+  animation: gum-hero-progress 6s linear forwards;
+}
+
+.gum-no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.gum-no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

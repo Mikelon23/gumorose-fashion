@@ -1,0 +1,101 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Gumorose: API (puerto 3001)",
+      "detail": "Backend Fastify + CMS propio (http://localhost:3001).",
+      "type": "shell",
+      "command": "pnpm --filter @gumorose/api dev",
+      "isBackground": true,
+      "presentation": {
+        "group": "gumorose",
+        "reveal": "silent"
+      },
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "^.*$",
+          "file": 1,
+          "location": 2,
+          "message": 0
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*",
+          "endsPattern": "Gumorose API escuchando|listening|escuchando"
+        }
+      }
+    },
+    {
+      "label": "Gumorose: Web (puerto 5173)",
+      "detail": "Tienda, Mis Pedidos y Admin CMS (http://localhost:5173).",
+      "type": "shell",
+      "command": "pnpm --filter @gumorose/web dev",
+      "isBackground": true,
+      "presentation": {
+        "group": "gumorose",
+        "reveal": "silent"
+      },
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "^.*$",
+          "file": 1,
+          "location": 2,
+          "message": 0
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*",
+          "endsPattern": "Local:\\s+http|ready in"
+        }
+      }
+    },
+    {
+      "label": "Gumorose: Móvil (puerto 5174, red local)",
+      "detail": "App móvil accesible en LAN vía http://<tu-ip>:5174 (vite host:true).",
+      "type": "shell",
+      "command": "pnpm --filter @gumorose/mobile dev",
+      "isBackground": true,
+      "presentation": {
+        "group": "gumorose",
+        "reveal": "silent"
+      },
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "^.*$",
+          "file": 1,
+          "location": 2,
+          "message": 0
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*",
+          "endsPattern": "Local:\\s+http|ready in|Network:"
+        }
+      }
+    },
+    {
+      "label": "Gumorose: Todo (API + Web + Móvil)",
+      "detail": "Levanta los 3 servidores con un solo comando.",
+      "dependsOn": [
+        "Gumorose: API (puerto 3001)",
+        "Gumorose: Web (puerto 5173)",
+        "Gumorose: Móvil (puerto 5174, red local)"
+      ],
+      "dependsOrder": "parallel"
+    },
+    {
+      "label": "Gumorose: Abrir móvil en Simple Browser",
+      "detail": "Levanta todo y deja listo http://localhost:5174 para abrirlo en Simple Browser (Ctrl+Shift+P → «Simple Browser: Show»).",
+      "dependsOn": ["Gumorose: Todo (API + Web + Móvil)"],
+      "dependsOrder": "sequence",
+      "type": "shell",
+      "command": "echo",
+      "args": [
+        "Movil listo en http://localhost:5174 — en VS Code pulsa Ctrl+Shift+P, escribe «Simple Browser: Show» y pega esa URL."
+      ],
+      "presentation": {
+        "reveal": "always"
+      }
+    }
+  ]
+}

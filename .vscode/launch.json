@@ -1,0 +1,29 @@
+{
+  "version": "0.2.0",
+  "compounds": [
+    {
+      "name": "Gumorose: Full Stack + Móvil",
+      "configurations": [],
+      "preLaunchTask": "Gumorose: Abrir móvil en Simple Browser",
+      "stopAll": true
+    }
+  ],
+  "configurations": [
+    {
+      "name": "Gumorose: Web (Simple Browser http://localhost:5173)",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/apps/web",
+      "preLaunchTask": "Gumorose: Todo (API + Web + Móvil)"
+    },
+    {
+      "name": "Gumorose: Móvil (Simple Browser http://localhost:5174)",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:5174",
+      "webRoot": "${workspaceFolder}/apps/mobile",
+      "preLaunchTask": "Gumorose: Todo (API + Web + Móvil)"
+    }
+  ]
+}
